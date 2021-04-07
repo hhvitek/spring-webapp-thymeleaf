@@ -10,6 +10,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -94,6 +97,10 @@ class PersonControllerTest {
 
         Mockito.when(this.personRepository.existsById(99))
                 .thenReturn(false);
+
+        Page<PersonEntity> personPage = new PageImpl<>(personDb);
+        Mockito.when(this.personRepository.findAll(any(Pageable.class)))
+                .thenReturn(personPage);
     }
 
     @Test

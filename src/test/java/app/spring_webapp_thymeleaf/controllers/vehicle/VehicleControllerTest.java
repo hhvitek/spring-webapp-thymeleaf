@@ -1,5 +1,6 @@
 package app.spring_webapp_thymeleaf.controllers.vehicle;
 
+import app.spring_webapp_thymeleaf.entities.PersonEntity;
 import app.spring_webapp_thymeleaf.entities.VehicleEntity;
 import app.spring_webapp_thymeleaf.repositories.VehicleRepository;
 import org.junit.jupiter.api.Assertions;
@@ -11,6 +12,9 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -98,6 +102,10 @@ class VehicleControllerTest {
 
         Mockito.doAnswer(invocationOnMock -> vehiclesDb.remove(1)).when(this.vehicleRepository).deleteById(1);
         Mockito.doAnswer(invocationOnMock -> vehiclesDb.remove(99)).when(this.vehicleRepository).deleteById(99);
+
+        Page<VehicleEntity> vehiclePage = new PageImpl<>(vehiclesDb);
+        Mockito.when(this.vehicleRepository.findAll(any(Pageable.class)))
+                .thenReturn(vehiclePage);
     }
 
     @Test
