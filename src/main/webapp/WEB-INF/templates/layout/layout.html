@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE" th:text="#{app.layout_title}">Custom Application</title>
+        <div th:replace="/layout/head"></div>
+    </head>
+    <body>
+        <div th:insert="layout/body-header :: header">Header</div>
+
+        <div class="container">
+            <div th:insert="layout/error :: error">Error message</div>
+
+            <div layout:fragment="content">
+            </div>
+        </div>
+
+        <div th:insert="layout/body-footer :: footer">&copy; 2020</div>
+
+    </body>
+</html>

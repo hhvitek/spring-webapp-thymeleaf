@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title th:text="#{app.pages.people.title}">Vehicles Title</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th th:text="#{vehicle.id}"> Id</th>
+                <th th:text="#{person.name}"> Name</th>
+                <th th:text="#{person.canDrive}"> Can Drive</th>
+                <th th:text="#{form.show.actions}"> Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${entities.empty}">
+                <td colspAan="4">No People</td>
+            </tr>
+            <tr th:each="person : ${entities}">
+                <td><span th:text="${person.id}"> Id </span></td>
+                <td><span th:text="${person.name}"> Name </span></td>
+                <td><span th:text="${person.canDrive}"> Can Drive </span></td>
+                <td><span> <a href="#" th:href="@{/people/edit(id=${person.id})}" type="button" class="btn btn-warning"
+                              th:text="#{form.edit.button}">Edit</a> </span>
+                    <span> <a href="#" th:href="@{/people/remove(id=${person.id})}" type="button" class="btn btn-danger"
+                              th:text="#{form.remove.button}">Remove</a> </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a href="#" th:href="@{/people/add}" type="button" class="btn btn-primary"
+           th:text="#{form.add.new.entity}">Add New
+        </a>
+    </div>
+</div>
+
+</body>
+
+</html>

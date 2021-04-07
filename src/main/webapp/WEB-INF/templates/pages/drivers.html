@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title th:text="#{app.pages.drivers.title}">Drivers Title</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th th:text="#{driver.id}"> Id</th>
+                <th th:text="#{driver.person.id}"> Person Id</th>
+                <th th:text="#{driver.vehicle.id}"> Vehicle Id</th>
+                <th th:text="#{driver.dateFrom}"> From</th>
+                <th th:text="#{driver.dateTo}"> To</th>
+                <th th:text="#{form.show.actions}"> Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${entities.empty}">
+                <td colspAan="6">No Drivers</td>
+            </tr>
+            <tr th:each="driver : ${entities}">
+                <td><span th:text="${driver.id}"> Id </span></td>
+                <td><span th:text="${driver.personEntity.id}"> Person id </span></td>
+                <td><span th:text="${driver.vehicleEntity.id}"> Vehicle id </span></td>
+                <td><span th:text="${driver.dateFrom}"> From </span></td>
+                <td><span th:text="${driver.dateTo}"> To </span></td>
+                <td><span> <a href="#" th:href="@{/drivers/edit(id=${driver.id})}" type="button" class="btn btn-warning"
+                              th:text="#{form.edit.button}">Edit</a> </span>
+                    <span> <a href="#" th:href="@{/drivers/remove(id=${driver.id})}" type="button" class="btn btn-danger"
+                              th:text="#{form.remove.button}">Remove</a> </span>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a href="#" th:href="@{/drivers/add}" type="button" class="btn btn-primary"
+           th:text="#{form.add.new.entity}">Add New
+        </a>
+        <a href="#" th:href="@{/drivers/cannot}" type="button" class="btn btn-secondary"
+           th:text="#{form.filter.cannot.drive}">Filter cannot
+        </a>
+    </div>
+</div>
+
+</body>
+
+</html>

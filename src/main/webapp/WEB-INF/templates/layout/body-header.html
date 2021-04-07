@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+</head>
+
+<body>
+<div th:fragment="header">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
+                        <a class="nav-link" href="#" th:href="@{/api/home}" th:text="#{header.nav.home}">Home</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${module == 'vehicles' ? 'active' : ''}">
+                        <a class="nav-link" href="#" th:href="@{/vehicles}"
+                           th:text="#{header.nav.vehicles}">Vehicles</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${module == 'people' ? 'active' : ''}">
+                        <a class="nav-link" href="#" th:href="@{/people}"
+                           th:text="#{header.nav.people}">People</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${module == 'drivers' ? 'active' : ''}">
+                        <a class="nav-link" href="#" th:href="@{/drivers}"
+                           th:text="#{header.nav.drivers}">People</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                           th:text="#{header.lang.change}">Language <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" th:href="@{/?lang=en}" th:text="#{header.lang.en}" class="language"></a>
+                            </li>
+                            <li><a href="#" th:href="@{/?lang=cs_CZ}" th:text="#{header.lang.cs}" class="language"></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

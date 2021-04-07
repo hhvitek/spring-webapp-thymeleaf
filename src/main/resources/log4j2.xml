@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- move this into the resources folder -->
+<Configuration status="info">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%highlight{%date{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level [%logger{36}::%method{36}():%line{5}] - %msg{1024}%n%throwable}"
+                    disableAnsi="false"/>
+            <!--disableAnsi="false" fixes the colour highlight on the Windows platform -->
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="app" level="debug">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

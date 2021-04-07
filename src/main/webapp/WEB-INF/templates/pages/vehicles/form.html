@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title th:text="#{app.pages.vehicles.title}">Vehicles Title</title>
+</head>
+
+<body>
+<div th:fragment="vehicles-form">
+    <fieldset th:if="${#fields.hasErrors('${entity.*}')}" class="text-warning">
+        <legend th:text="#{form.error.legend.title}">Some errors appeared !</legend>
+        <ul>
+            <li th:each="err : ${#fields.errors('entity.*')}" th:text="${err}"></li>
+        </ul>
+    </fieldset>
+    <form th:action="@{/vehicles/{endpoint}(endpoint=${endpoint})}" th:object="${entity}" th:method="post">
+        <div class="mb-3">
+            <label for="form-id" class="form-label" th:text="#{vehicle.id}">Id</label>
+            <input type="text" class="form-control" id="form-id" th:field="*{id}" >
+            <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="text-danger" >
+                Error Message
+            </p>
+        </div>
+        <div class="mb-3">
+            <label for="form-type" class="form-label" th:text="#{vehicle.type}">Type</label>
+            <input type="text" class="form-control" id="form-type" th:field="*{type}">
+            <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="text-danger" >
+                Error Message
+            </p>
+        </div>
+        <div class="mb-3">
+            <label for="form-name" class="form-label" th:text="#{vehicle.name}">Name</label>
+            <input type="text" class="form-control" id="form-name" th:field="*{name}">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger" >
+                Error Message
+            </p>
+        </div>
+        <button type="submit" class="btn btn-primary" th:text="#{${saveButtonMessageSourceCode}}">Save</button>
+        <button type="button" class="btn btn-secondary goback" th:text="#{form.goback.button}">Back</button>
+    </form>
+</div>
+</body>
+</html>
