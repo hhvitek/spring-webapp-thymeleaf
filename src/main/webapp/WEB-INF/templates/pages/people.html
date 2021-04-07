@@ -19,10 +19,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:if="${entities.empty}">
-                <td colspAan="4">No People</td>
-            </tr>
-            <tr th:each="person : ${entities}">
+            <tr th:each="person : ${entityPage.content}">
                 <td><span th:text="${person.id}"> Id </span></td>
                 <td><span th:text="${person.name}"> Name </span></td>
                 <td><span th:text="${person.canDrive}"> Can Drive </span></td>
@@ -34,6 +31,10 @@
             </tr>
             </tbody>
         </table>
+    </div>
+
+    <div th:with="endpoint=people">
+        <div th:replace="pages/entitiesPagination :: entities-pagination"></div>
     </div>
 
     <div>

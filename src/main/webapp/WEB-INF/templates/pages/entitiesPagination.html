@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title th:text="#{app.pages.vehicles.title}">Vehicles Title</title>
+</head>
+
+<body>
+<div th:fragment="entities-pagination">
+
+    <div th:if="${entityPage.totalPages > 1}">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li th:each="pageNumber : ${pageNumbers}" class="page-item" th:classappend="${pageNumber==entityPage.number + 1} ? active">
+                    <a class="page-link"
+                       th:href="@{/{endpoint}(endpoint=${endpoint}, size=${entityPage.size}, page=${pageNumber})}"
+                       th:text=${pageNumber}
+                    >99</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+</body>
+</html>

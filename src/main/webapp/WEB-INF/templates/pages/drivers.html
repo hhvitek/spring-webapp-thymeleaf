@@ -21,10 +21,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:if="${entities.empty}">
-                <td colspAan="6">No Drivers</td>
-            </tr>
-            <tr th:each="driver : ${entities}">
+            <tr th:each="driver : ${entityPage.content}">
                 <td><span th:text="${driver.id}"> Id </span></td>
                 <td><span th:text="${driver.personEntity.id}"> Person id </span></td>
                 <td><span th:text="${driver.vehicleEntity.id}"> Vehicle id </span></td>
@@ -39,6 +36,9 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div th:with="endpoint=drivers">
+        <div th:replace="pages/entitiesPagination :: entities-pagination"></div>
     </div>
 
     <div>
