@@ -73,7 +73,7 @@ class DriverControllerTest {
                     // if already in db
                     DriverEntity driver = invocation.getArgument(0, DriverEntity.class);
                     for (DriverEntity entity: driverDb) {
-                        if (entity.getId() == driver.getId()) {
+                        if (entity.getId().equals(driver.getId())) {
                             return entity;
                         }
                     }

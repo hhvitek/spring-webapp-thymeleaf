@@ -70,7 +70,7 @@ class PersonControllerTest {
                     // if already in db
                     PersonEntity person = invocation.getArgument(0, PersonEntity.class);
                     for (PersonEntity entity: personDb) {
-                        if (entity.getId() == person.getId()) {
+                        if (entity.getId().equals(person.getId())) {
                             entity.setCanDrive(person.getCanDrive());
                             entity.setName(person.getName());
                             return entity;

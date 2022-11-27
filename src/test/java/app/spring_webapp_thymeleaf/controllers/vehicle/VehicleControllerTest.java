@@ -71,7 +71,7 @@ class VehicleControllerTest {
                     // if already in db
                     VehicleEntity vehicle = invocation.getArgument(0, VehicleEntity.class);
                     for (VehicleEntity entity: vehiclesDb) {
-                        if (entity.getId() == vehicle.getId()) {
+                        if (entity.getId().equals(vehicle.getId())) {
                             entity.setType(vehicle.getType());
                             entity.setName(vehicle.getName());
                             return entity;
