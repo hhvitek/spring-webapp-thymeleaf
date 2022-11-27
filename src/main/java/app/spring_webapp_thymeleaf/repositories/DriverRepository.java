@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @Repository
-public interface DriverRepository extends MyBaseRepository<DriverEntity, Integer> {
+public interface DriverRepository extends MyBaseRepository<DriverEntity> {
 
     @Query("SELECT d FROM driver d, person p WHERE d.personEntity.id=p.id AND p.canDrive=false")
     List<DriverEntity> findAllDriversWhoCannotDrive();

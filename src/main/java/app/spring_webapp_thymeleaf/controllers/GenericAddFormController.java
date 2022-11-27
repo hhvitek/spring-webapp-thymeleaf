@@ -22,13 +22,13 @@ import javax.validation.Valid;
  *      - performs checks for entity valid state before storing
  *      - also must check if for example the entity is not already existing in DB
  */
-public abstract class GenericAddFormController<R extends MyBaseRepository, E extends AbstractEntity> {
+public abstract class GenericAddFormController<E extends AbstractEntity> {
 
-    protected final R repository;
-    private final GenericController genericController;
+    protected final MyBaseRepository<E> repository;
+    private final GenericController<E> genericController;
 
-    public GenericAddFormController(R repository,
-                                    GenericController genericController) {
+    public GenericAddFormController(MyBaseRepository<E> repository,
+                                    GenericController<E> genericController) {
         this.repository = repository;
         this.genericController = genericController;
     }

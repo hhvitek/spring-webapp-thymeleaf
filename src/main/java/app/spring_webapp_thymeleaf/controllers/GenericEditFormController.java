@@ -21,12 +21,12 @@ import javax.validation.Valid;
  * POST|PUT ...url.../entities/edit?id=X&var2=Y&var3=Z
  *      - performs checks for entity valid state before storing
  */
-public abstract class GenericEditFormController<R extends MyBaseRepository, E extends AbstractEntity> {
+public abstract class GenericEditFormController<E extends AbstractEntity> {
 
-    protected final R repository;
-    private final GenericController genericController;
+    protected final MyBaseRepository<E> repository;
+    private final GenericController<E> genericController;
 
-    public GenericEditFormController(R repository, GenericController genericController) {
+    public GenericEditFormController(MyBaseRepository<E> repository, GenericController<E> genericController) {
         this.repository = repository;
         this.genericController = genericController;
     }

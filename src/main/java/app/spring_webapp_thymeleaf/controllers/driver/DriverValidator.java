@@ -1,24 +1,18 @@
 package app.spring_webapp_thymeleaf.controllers.driver;
 
 import app.spring_webapp_thymeleaf.entities.DriverEntity;
-import app.spring_webapp_thymeleaf.repositories.DriverRepository;
 import app.spring_webapp_thymeleaf.repositories.PersonRepository;
 import app.spring_webapp_thymeleaf.repositories.VehicleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 @Component
 public class DriverValidator implements Validator {
-
-    private final DriverRepository driverRepository;
     private final PersonRepository personRepository;
     private final VehicleRepository vehicleRepository;
 
-    @Autowired
-    public DriverValidator(DriverRepository driverRepository, PersonRepository personRepository, VehicleRepository vehicleRepository) {
-        this.driverRepository = driverRepository;
+    public DriverValidator(PersonRepository personRepository, VehicleRepository vehicleRepository) {
         this.personRepository = personRepository;
         this.vehicleRepository = vehicleRepository;
     }

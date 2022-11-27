@@ -22,12 +22,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * GET|DELETE ...url.../entities/remove?id=99
  *      - must check if entity referenced by id=99 actually exist in database
  */
-public abstract class GenericController<R extends MyBaseRepository, E extends AbstractEntity> implements MessageSourceAware {
-    protected final R repository;
+public abstract class GenericController<E extends AbstractEntity> implements MessageSourceAware {
+    protected final MyBaseRepository<E> repository;
     private final String pageName;
     private MessageSource messageSource;
 
-    public GenericController(R repository, String pageName) {
+    public GenericController(MyBaseRepository<E> repository, String pageName) {
         this.repository = repository;
         this.pageName = pageName;
     }
