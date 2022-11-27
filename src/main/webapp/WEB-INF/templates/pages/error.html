@@ -9,10 +9,9 @@
 <body>
 <div layout:fragment="content">
     <h1 th:text="#{app.pages.error.title}">Error encountered!</h1>
-    <p th:if="${originalUri}" th:text="${originalUri}"></p>
+    <p th:if="${originalUri}" th:text="${originalUri}"></p>`
     <p th:if="${message}" th:text="${message}"></p>
     <p th:if="${exception}" th:text="${exception}"></p>
-    <p th:if="${exception.message}" th:text="${exception.message}"></p>
 
 </div>
 </body>
